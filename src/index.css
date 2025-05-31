@@ -46,3 +46,38 @@
   /* customise default tailwind spacing */
   --spacing: 0.5rem;
 }
+
+@layer base {
+  body{
+    @apply font-kumbh-sans;
+  }
+}
+
+/* text preset utility classes */
+@utility text-preset-1-bold{
+  @apply text-xl leading-none font-bold;
+}
+
+@utility text-preset-2-bold{
+  @apply text-lg leading-tight font-bold;
+}
+
+@utility text-preset-3{
+  @apply text-base leading-relaxed;
+}
+
+@utility text-preset-3-bold{
+  @apply text-base leading-relaxed font-bold;
+}
+
+@utility text-preset-4{
+  @apply text-sm leading-loose;
+}
+
+@utility text-preset-5-bold{
+  @apply text-xs leading-snug tracking-lg font-bold;
+}
+
+@utility text-preset-6-bold{
+  @apply text-xl leading-normal tracking-md font-bold;
+}
