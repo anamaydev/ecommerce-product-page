@@ -1,1 +1,48 @@
+@font-face{
+  font-family: 'Kumbh Sans';
+  src: url("./assets/fonts/kumbh_Sans/KumbhSans-VariableFont_YOPQ,wght.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import "tailwindcss";
+
+@theme{
+  /* custom font */
+  --font-kumbh-sans: 'Kumbh Sans', sans-serif;
+  
+  /* custom colors */
+  --color-white: hsla(0, 0%, 100%, 1);
+  --color-black: hsla(0, 0%, 0%, 1);
+  --color-grey-950: hsla(220, 13%, 13%, 1);
+  --color-grey-500: hsla(219, 9%, 45%, 1);
+  --color-grey-300: hsla(221, 22%, 81%, 1);
+  --color-grey-100: hsla(219, 35%, 92%, 1);
+  --color-grey-50: hsla(223, 64%, 98%, 1);
+  --color-orange-500: hsla(26, 100%, 55%, 1);
+  --color-orange-100: hsla(26, 100%, 71%, 1);
+  
+  /* custom font sizes */
+  --text-xl: 2.75rem;      /* 44px */
+  --text-lg: 1.75rem;      /* 28px */
+  --text-base: 1rem;       /* 16px */
+  --text-sm: 0.9375rem;    /* 15px */
+  --text-xs: 0.8125rem;    /* 13px */
+  --text-xxs: 0.75rem;     /* 12px */
+  
+  /* custom line height */
+  --leading-none: 1.09;
+  --leading-tight: 1.14;
+  --leading-snug: 1.23;
+  --leading-normal: 1.25;
+  --leading-relaxed: 1.625;
+  --leading-loose: 1.73;
+  
+  /* custom letter spacing */
+  --tracking-lg: 2px;
+  --tracking-md: 1.85px;
+  
+  /* customise default tailwind spacing */
+  --spacing: 0.5rem;
+}
