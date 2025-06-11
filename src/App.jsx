@@ -1,7 +1,7 @@
-import Header from './components/Header'
+import CustomHeader from './components/CustomHeader'
 function App() {
   return (
-    <Header/>
+    <CustomHeader/>
   )
 }
 
