@@ -71,7 +71,7 @@
 }
 
 @utility text-preset-4{
-  @apply text-sm leading-loose;
+  @apply text-sm leading-loose font-normal;
 }
 
 @utility text-preset-5-bold{
@@ -79,5 +79,5 @@
 }
 
 @utility text-preset-6-bold{
-  @apply text-xl leading-normal tracking-md font-bold;
+  @apply text-xxs leading-normal tracking-md font-bold;
 }

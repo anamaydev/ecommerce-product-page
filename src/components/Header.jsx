@@ -17,7 +17,7 @@ function Header() {
     {page:'Men', href: '#'},
     {page:'Women', href: '#'},
     {page:'About', href: '#'},
-    {page:'contact', href: '#'},
+    {page:'Contact', href: '#'},
   ]
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function Header() {
   return (
     <HeaderContext.Provider value={{pages, menuOpen, setMenuOpen}}>
       <div className="flex justify-between items-center px-3 sm:px-0">
-        <div className="flex gap-2">
+        <div className="flex gap-2 lg:gap-7">
           <Header.MenuIcon></Header.MenuIcon>
           <Header.Logo></Header.Logo>
           <Header.Navbar>
@@ -47,14 +47,14 @@ Header.MenuIcon = function HeaderMenuIcon() {
   const {setMenuOpen} = useContext(HeaderContext);
 
   return (
-    <button className="md:hidden" onClick={()=>setMenuOpen(prevMenuOpen => !prevMenuOpen)}>
+    <button className="lg:hidden" onClick={()=>setMenuOpen(prevMenuOpen => !prevMenuOpen)}>
       <img src={menuIcon} alt=""/>
     </button>
   )
 }
 
 Header.Logo = function HeaderLogo() {
-  return (<img src={logo} alt="sneakers logo"/>)
+  return (<img className="h-2.5" src={logo} alt="sneakers logo"/>)
 }
 
 Header.CartButton = function HeaderCartButton() {
@@ -80,20 +80,26 @@ Header.Navbar = function HeaderNavbar({children}) {
     <nav>
       {
         menuOpen &&
-        <div className="fixed inset-y-0 left-0 right-[33.33%] p-3 flex flex-col gap-7  bg-red-200">
+        <div className="max-w-37.5 fixed inset-y-0 left-0 right-[33.33%] p-3 sm:px-10 sm:py-6 flex flex-col gap-7 lg:hidden bg-red-200">
           <button onClick={()=>setMenuOpen(prevMenuOpen=> !prevMenuOpen)}><img src={closeIcon} alt=""/></button>
           <ul className="flex flex-col gap-3">
             {children}
           </ul>
         </div>
       }
+
+      <div className="hidden lg:block">
+        <ul className="flex gap-4">
+          {children}
+        </ul>
+      </div>
     </nav>
   )
 }
 
 Header.NavPage = function HeaderNavPage({children, href}) {
   return (
-    <li><a href={href}>{children}</a></li>
+    <li><a className="text-preset-3-bold text-4.5 lg:text-preset-4" href={href}>{children}</a></li>
   )
 }
 
