@@ -80,12 +80,15 @@ Header.Navbar = function HeaderNavbar({children}) {
     <nav>
       {
         menuOpen &&
-        <div className="max-w-37.5 fixed inset-y-0 left-0 right-[33.33%] p-3 sm:px-10 sm:py-6 flex flex-col gap-7 lg:hidden bg-red-200">
-          <button onClick={()=>setMenuOpen(prevMenuOpen=> !prevMenuOpen)}><img src={closeIcon} alt=""/></button>
-          <ul className="flex flex-col gap-3">
-            {children}
-          </ul>
-        </div>
+        <>
+          <div className="fixed inset-0 z-10 opacity-75 lg:hidden bg-black"></div>
+          <div className="max-w-37.5 fixed inset-y-0 z-20 left-0 right-[33.33%] p-3 sm:px-10 sm:py-6 flex flex-col gap-7 lg:hidden bg-white">
+            <button onClick={()=>setMenuOpen(prevMenuOpen=> !prevMenuOpen)}><img src={closeIcon} alt=""/></button>
+            <ul className="flex flex-col gap-3">
+              {children}
+            </ul>
+          </div>
+        </>
       }
 
       <div className="hidden lg:block">
@@ -99,7 +102,7 @@ Header.Navbar = function HeaderNavbar({children}) {
 
 Header.NavPage = function HeaderNavPage({children, href}) {
   return (
-    <li><a className="text-preset-3-bold text-4.5 lg:text-preset-4" href={href}>{children}</a></li>
+    <li><a className="text-preset-3-bold text-4.5 lg:text-preset-4 lg:text-grey-500" href={href}>{children}</a></li>
   )
 }
 
