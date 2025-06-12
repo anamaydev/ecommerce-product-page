@@ -1,11 +1,11 @@
 import {useState, useEffect} from 'react';
 import {useContext, createContext} from 'react';
 import {nanoid} from 'nanoid'
-import menuIcon from '../assets/images/icon-menu.svg'
-import logo from '../assets/images/logo.svg'
-import cartIcon from '../assets/images/icon-cart.svg'
-import userProfileIcon from '../assets/images/image-avatar.png'
-import closeIcon from '../assets/images/icon-close.svg'
+import menuIcon from '../../assets/images/icon-menu.svg'
+import logo from '../../assets/images/logo.svg'
+import cartIcon from '../../assets/images/icon-cart.svg'
+import userProfileIcon from '../../assets/images/image-avatar.png'
+import closeIcon from '../../assets/images/icon-close.svg'
 
 const HeaderContext = createContext();
 
