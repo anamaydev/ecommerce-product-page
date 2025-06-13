@@ -1,15 +1,15 @@
+import {useContext, useState} from "react";
 import Carousel from "./Carousel";
+import ProductInfo from "./ProductInfo";
 import { ProductDataContext } from '../../App.jsx'
-
 import prevIcon from '../../assets/images/icon-previous.svg'
 import nextIcon from '../../assets/images/icon-next.svg'
-import {useContext, useState} from "react";
 
 export default function Main(){
+  const [slideIndex, setSlideIndex] = useState(0);
+
   const data = useContext(ProductDataContext);
   const images = data.productImages;
-
-  const [slideIndex, setSlideIndex] = useState(0);
 
   function setNextSlideIndex(){
     setSlideIndex(prevSlideIndex => prevSlideIndex === images.length-1 ? 0 : prevSlideIndex + 1);
@@ -22,7 +22,7 @@ export default function Main(){
   return (
     <main>
       <hr className="hidden sm:block sm:mt-4 text-grey-100"/>
-      <div className="mt-3 md:mt-6 lg:mt-12">
+      <div className="mt-3 md:mt-6 lg:mt-12 flex flex-col lg:flex-row gap-3 md:gap-6 lg:gap-16 lg:items-center">
         {/* carousel */}
         <Carousel>
           <div className="relative">
@@ -36,6 +36,12 @@ export default function Main(){
         </Carousel>
 
         {/* product info */}
+        <ProductInfo>
+          <ProductInfo.CompanyName>{data.company}</ProductInfo.CompanyName>
+          <ProductInfo.ProductName>{data.productName}</ProductInfo.ProductName>
+          <ProductInfo.ProductDescription>{data.productDescription}</ProductInfo.ProductDescription>
+          <ProductInfo.ProductPrice></ProductInfo.ProductPrice>
+        </ProductInfo>
       </div>
     </main>
   )
