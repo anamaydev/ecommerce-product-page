@@ -54,6 +54,7 @@ Carousel.ThumbnailIndicator = function CarouselThumbnailIndicator({slideIndex, s
       <button
         className={`w-11 h-11 border-2 rounded-[10px] ${index === slideIndex ? 'selectedIndicator' : 'border-transparent'} overflow-hidden relative`}
         onClick={() => setSlideIndex(index)}
+        key={index}
       >
         <img
           src={image.src}
