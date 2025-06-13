@@ -25,9 +25,14 @@ export default function Main(){
       <div className="mt-3 md:mt-6 lg:mt-12">
         {/* carousel */}
         <Carousel>
-          <Carousel.ControlButton iconUrl={prevIcon} role={'prev'} onClick={setPrevSlideIndex}/>
-          <Carousel.Slides slideIndex={slideIndex}/>
-          <Carousel.ControlButton iconUrl={nextIcon} role={'next'} onClick={setNextSlideIndex}/>
+          <div className="relative">
+            <Carousel.ControlButton iconUrl={prevIcon} role={'prev'} onClick={setPrevSlideIndex}/>
+            <Carousel.Slides slideIndex={slideIndex}/>
+            <Carousel.ControlButton iconUrl={nextIcon} role={'next'} onClick={setNextSlideIndex}/>
+          </div>
+          <div className="hidden lg:flex gap-4">
+            <Carousel.ThumbnailIndicator slideIndex={slideIndex} setSlideIndex={setSlideIndex}/>
+          </div>
         </Carousel>
 
         {/* product info */}

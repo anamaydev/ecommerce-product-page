@@ -81,3 +81,7 @@
 @utility text-preset-6-bold{
   @apply text-xxs leading-normal tracking-md font-bold;
 }
+
+@utility selectedIndicator{
+  @apply border-orange-500 after:content-[""] after:absolute after:inset-0 after:bg-white after:opacity-75;
+}
