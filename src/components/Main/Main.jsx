@@ -1,13 +1,15 @@
-import {useContext, useState} from "react";
+import {useContext, useState, useRef} from "react";
 import Carousel from "./Carousel";
 import ProductInfo from "./ProductInfo";
 import { ProductDataContext } from '../../App.jsx'
 import prevIcon from '../../assets/images/icon-previous.svg'
 import nextIcon from '../../assets/images/icon-next.svg'
+import closeIcon from '../../assets/images/icon-close.svg'
 
 export default function Main(){
   const [slideIndex, setSlideIndex] = useState(0);
   const [quantity, setQuantity] = useState(0);
+  const dialogRef = useRef(null);
 
   const data = useContext(ProductDataContext);
   const images = data.productImages;
@@ -28,7 +30,9 @@ export default function Main(){
         <Carousel>
           <div className="relative">
             <Carousel.ControlButton iconUrl={prevIcon} role={'prev'} onClick={setPrevSlideIndex}/>
-            <Carousel.Slides slideIndex={slideIndex}/>
+            <button onClick={()=>dialogRef.current.showModal()}>
+              <Carousel.Slides slideIndex={slideIndex}/>
+            </button>
             <Carousel.ControlButton iconUrl={nextIcon} role={'next'} onClick={setNextSlideIndex}/>
           </div>
           <div className="hidden lg:flex gap-4">
@@ -52,6 +56,24 @@ export default function Main(){
           </div>
         </ProductInfo>
       </div>
+
+      {/* modal */}
+      <dialog ref={dialogRef} className="p-0 backdrop:bg-black/50 w-screen h-screen max-w-none max-h-none bg-transparent">
+        <div className="flex justify-center items-center h-full w-full bg-transparent">
+          <Carousel>
+            <Carousel.CloseButton dialogRef={dialogRef}/>
+            <div className="relative">
+              <Carousel.ControlButton iconUrl={prevIcon} role={'prev'} onClick={setPrevSlideIndex}/>
+              <Carousel.Slides slideIndex={slideIndex}/>
+              <Carousel.ControlButton iconUrl={nextIcon} role={'next'} onClick={setNextSlideIndex}/>
+            </div>
+            <div className="hidden lg:flex gap-4">
+              <Carousel.ThumbnailIndicator slideIndex={slideIndex} setSlideIndex={setSlideIndex}/>
+            </div>
+          </Carousel>
+        </div>
+      </dialog>
+
     </main>
   )
 }

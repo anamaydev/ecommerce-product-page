@@ -17,3 +17,9 @@ function App() {
 }
 
 export default App
+
+/*
+* todo:
+*  [ ] add header tag (semantic)
+*  [ ] fix prev and next button z-index (it is above the nav bar)
+* */
