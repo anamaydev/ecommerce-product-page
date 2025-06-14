@@ -39,7 +39,7 @@ export default function Main(){
         <Carousel>
           <div className="relative">
             <Carousel.ControlButton iconUrl={prevIcon} role={'prev'} onClick={setPrevSlideIndex} className={'lg:hidden'}/>
-            <button onClick={()=>setIsModalOpen(prevIsModalOpen => !prevIsModalOpen)}>
+            <button className="lg:cursor-pointer" onClick={()=>setIsModalOpen(prevIsModalOpen => !prevIsModalOpen)}>
               <Carousel.Slides slideIndex={slideIndex}/>
             </button>
             <Carousel.ControlButton iconUrl={nextIcon} role={'next'} onClick={setNextSlideIndex} className={'lg:hidden'}/>
@@ -67,7 +67,7 @@ export default function Main(){
       </div>
 
       {/* modal */}
-      <dialog ref={dialogRef} className="p-0 backdrop:bg-black/50 w-screen h-screen max-w-none max-h-none bg-transparent">
+      <dialog ref={dialogRef} className="p-0 backdrop:bg-black/75 w-screen h-screen max-w-none max-h-none bg-transparent">
         <div className="flex justify-center items-center h-full w-full bg-transparent">
           <Carousel>
             <Carousel.CloseButton setIsModalOpen={setIsModalOpen}/>
