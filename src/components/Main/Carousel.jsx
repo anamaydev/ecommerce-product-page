@@ -9,11 +9,11 @@ export default function Carousel({children}) {
   )
 }
 
-Carousel.ControlButton = function CarouselControlButton({iconUrl, role, onClick}) {
-  const position = role === 'prev' ? 'left-2' : role === 'next' ? 'right-2' : '';
+Carousel.ControlButton = function CarouselControlButton({iconUrl, role, onClick, className}) {
+  const position = role === 'prev' ? 'left-2 lg:left-0 lg:-translate-x-1/2' : role === 'next' ? 'right-2 lg:-right-0 lg:translate-x-1/2' : '';
   return (
     <button
-      className={`h-5 w-5 rounded-full flex justify-center items-center absolute z-100 top-1/2 -translate-y-1/2 bg-white ${position}`}
+      className={`h-5 w-5 rounded-full flex justify-center items-center absolute z-100 top-1/2 -translate-y-1/2 bg-white ${position} ${className}`}
       onClick={onClick}
     >
       <img src={iconUrl} alt=""/>
@@ -63,9 +63,9 @@ Carousel.ThumbnailIndicator = function CarouselThumbnailIndicator({slideIndex, s
   )
 }
 
-Carousel.CloseButton = function CarouselCloseButton({dialogRef}) {
+Carousel.CloseButton = function CarouselCloseButton({setIsModalOpen}) {
   return(
-    <button className="absolute h-2.5 w-2.5 -top-4 right-0 z-50 cursor-pointer" onClick={() => dialogRef.current.close()}>
+    <button className="absolute h-2.5 w-2.5 -top-4 right-0 z-50 cursor-pointer" onClick={()=>setIsModalOpen(prevIsModalOpen => !prevIsModalOpen)}>
       <svg className=" text-white hover:text-orange-500" width="14" height="15" xmlns="http://www.w3.org/2000/svg">
         <path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill="currentColor" fillRule="evenodd"/>
       </svg>

@@ -1,4 +1,4 @@
-import {useContext, useState, useRef} from "react";
+import {useContext, useState, useRef, useEffect} from "react";
 import Carousel from "./Carousel";
 import ProductInfo from "./ProductInfo";
 import { ProductDataContext } from '../../App.jsx'
@@ -9,6 +9,7 @@ import closeIcon from '../../assets/images/icon-close.svg'
 export default function Main(){
   const [slideIndex, setSlideIndex] = useState(0);
   const [quantity, setQuantity] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dialogRef = useRef(null);
 
   const data = useContext(ProductDataContext);
@@ -22,6 +23,14 @@ export default function Main(){
     setSlideIndex(prevSlideIndex => prevSlideIndex === 0 ? images.length - 1 : prevSlideIndex - 1);
   }
 
+  useEffect(() => {
+    if(window.innerWidth >= 1024 && isModalOpen){
+      dialogRef.current.showModal();
+    }else if(window.innerWidth >= 1024 && !isModalOpen){
+      dialogRef.current.close();
+    }
+  },[isModalOpen]);
+
   return (
     <main>
       <hr className="hidden sm:block sm:mt-4 text-grey-100"/>
@@ -29,11 +38,11 @@ export default function Main(){
         {/* carousel */}
         <Carousel>
           <div className="relative">
-            <Carousel.ControlButton iconUrl={prevIcon} role={'prev'} onClick={setPrevSlideIndex}/>
-            <button onClick={()=>dialogRef.current.showModal()}>
+            <Carousel.ControlButton iconUrl={prevIcon} role={'prev'} onClick={setPrevSlideIndex} className={'lg:hidden'}/>
+            <button onClick={()=>setIsModalOpen(prevIsModalOpen => !prevIsModalOpen)}>
               <Carousel.Slides slideIndex={slideIndex}/>
             </button>
-            <Carousel.ControlButton iconUrl={nextIcon} role={'next'} onClick={setNextSlideIndex}/>
+            <Carousel.ControlButton iconUrl={nextIcon} role={'next'} onClick={setNextSlideIndex} className={'lg:hidden'}/>
           </div>
           <div className="hidden lg:flex gap-4">
             <Carousel.ThumbnailIndicator slideIndex={slideIndex} setSlideIndex={setSlideIndex}/>
@@ -61,7 +70,7 @@ export default function Main(){
       <dialog ref={dialogRef} className="p-0 backdrop:bg-black/50 w-screen h-screen max-w-none max-h-none bg-transparent">
         <div className="flex justify-center items-center h-full w-full bg-transparent">
           <Carousel>
-            <Carousel.CloseButton dialogRef={dialogRef}/>
+            <Carousel.CloseButton setIsModalOpen={setIsModalOpen}/>
             <div className="relative">
               <Carousel.ControlButton iconUrl={prevIcon} role={'prev'} onClick={setPrevSlideIndex}/>
               <Carousel.Slides slideIndex={slideIndex}/>
