@@ -32,7 +32,7 @@ export default function Main(){
   },[isModalOpen]);
 
   return (
-    <main>
+    <main className="pb-8 lg:pb-0">
       <hr className="hidden sm:block sm:mt-4 text-grey-100"/>
       <div className="mt-3 md:mt-6 lg:mt-12 flex flex-col lg:flex-row gap-3 md:gap-6 lg:gap-16 lg:items-center lg:px-5.5">
         {/* carousel */}
