@@ -8,10 +8,11 @@ export const CartDataContext = createContext();
 
 function App() {
   const [cart, setCart] = useState({});
+  const [openCart, setOpenCart] = useState(false);
 
   return (
     <>
-      <CartDataContext.Provider value={{cart, setCart}}>
+      <CartDataContext.Provider value={{cart, setCart, openCart, setOpenCart}}>
         <CustomHeader/>
       </CartDataContext.Provider>
 
