@@ -31,7 +31,7 @@ Header.MenuIcon = function HeaderMenuIcon() {
   const {setMenuOpen} = useContext(HeaderContext);
 
   return (
-    <button className="lg:hidden" onClick={()=>setMenuOpen(prevMenuOpen => !prevMenuOpen)}>
+    <button className="lg:hidden cursor-pointer active:scale-95" onClick={()=>setMenuOpen(prevMenuOpen => !prevMenuOpen)}>
       <img src={menuIcon} alt=""/>
     </button>
   )
@@ -63,18 +63,13 @@ Header.Navbar = function HeaderNavbar() {
   const {menuOpen, setMenuOpen, pages} = useContext(HeaderContext);
   return (
     <nav>
-      {
-        menuOpen &&
-        <>
-          <div className="fixed inset-0 z-110 opacity-75 lg:hidden bg-black"></div>
-          <div className="max-w-37.5 fixed inset-y-0 z-120 left-0 right-[33.33%] p-3 sm:px-10 sm:py-6 flex flex-col gap-7 lg:hidden bg-white">
-            <button onClick={()=>setMenuOpen(prevMenuOpen=> !prevMenuOpen)}><img src={closeIcon} alt=""/></button>
-            <ul className="flex flex-col gap-3">
-              {pages.map(page=><Header.NavPage key={nanoid()} href={page.href}>{page.page}</Header.NavPage>)}
-            </ul>
-          </div>
-        </>
-      }
+      { menuOpen && <div className={`fixed inset-0 z-110 opacity-75 lg:hidden bg-black`}></div>}
+      <div className={`max-w-37.5 fixed inset-y-0 z-120 left-0 right-[33.33%] p-3 sm:px-10 sm:py-6 flex flex-col gap-7 lg:hidden bg-white transition-all duration-500 ${menuOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}>
+        <button className="cursor-pointer" onClick={()=>setMenuOpen(prevMenuOpen=> !prevMenuOpen)}><img src={closeIcon} alt=""/></button>
+        <ul className="flex flex-col gap-3">
+          {pages.map(page=><Header.NavPage key={nanoid()} href={page.href}>{page.page}</Header.NavPage>)}
+        </ul>
+      </div>
 
       <div className="hidden lg:block">
         <ul className="flex gap-4">
