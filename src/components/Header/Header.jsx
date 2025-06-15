@@ -20,9 +20,9 @@ function Header({children, pages}) {
 
   return (
     <HeaderContext.Provider value={{pages, menuOpen, setMenuOpen}}>
-      <div className="flex justify-between items-center px-3 sm:px-0">
+      <header className="flex justify-between items-center px-3 sm:px-0">
         {children}
-      </div>
+      </header>
     </HeaderContext.Provider>
   )
 }
