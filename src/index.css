@@ -83,5 +83,9 @@
 }
 
 @utility selectedIndicator{
-  @apply border-orange-500 after:content-[""] after:absolute after:inset-0 after:bg-white after:opacity-75;
+  @apply border-orange-500 overlayIndicator;
+}
+
+@utility overlayIndicator{
+  @apply after:content-[""] after:absolute after:inset-0 after:bg-white after:opacity-75;
 }

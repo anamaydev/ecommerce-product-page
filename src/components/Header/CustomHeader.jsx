@@ -20,6 +20,7 @@ export default function CustomHeader(){
         <Header.CartButton />
         <Header.UserProfileButton />
       </div>
+      <Header.CartModal />
     </Header>
   )
 }

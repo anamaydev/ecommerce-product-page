@@ -61,7 +61,7 @@ export default function Main(){
           <ProductInfo.ProductPrice />
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-1 lg:gap-2 ">
             <ProductInfo.Quantity quantity={quantity} setQuantity={setQuantity}/>
-            <ProductInfo.AddToCart></ProductInfo.AddToCart>
+            <ProductInfo.AddToCart quantity={quantity}/>
           </div>
         </ProductInfo>
       </div>

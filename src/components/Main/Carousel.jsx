@@ -48,7 +48,7 @@ Carousel.ThumbnailIndicator = function CarouselThumbnailIndicator({slideIndex, s
   return(
     images.map((image, index) => (
       <button
-        className={`w-11 h-11 border-2 rounded-[10px] ${index === slideIndex ? 'selectedIndicator' : 'border-transparent'} overflow-hidden relative cursor-pointer active:scale-95`}
+        className={`w-11 h-11 border-2 rounded-[10px] ${index === slideIndex ? 'selectedIndicator' : 'border-transparent'} overflow-hidden relative cursor-pointer active:scale-95 hover:overlayIndicator`}
         onClick={() => setSlideIndex(index)}
         key={index}
       >

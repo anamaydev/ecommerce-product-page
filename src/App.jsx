@@ -1,17 +1,25 @@
-import { createContext } from "react";
+import { useState, createContext } from "react";
 import CustomHeader from './components/Header/CustomHeader.jsx'
 import Main from './components/Main/Main'
 import { productData } from './data'
 
 export const ProductDataContext = createContext();
+export const CartDataContext = createContext();
 
 function App() {
+  const [cart, setCart] = useState({});
+
   return (
     <>
-      <CustomHeader/>
-      <ProductDataContext.Provider value={productData}>
-        <Main/>
-      </ProductDataContext.Provider>
+      <CartDataContext.Provider value={{cart, setCart}}>
+        <CustomHeader/>
+      </CartDataContext.Provider>
+
+      <CartDataContext.Provider value={setCart}>
+        <ProductDataContext.Provider value={productData}>
+          <Main/>
+        </ProductDataContext.Provider>
+      </CartDataContext.Provider>
     </>
   )
 }
